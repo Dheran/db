@@ -1,17 +1,28 @@
 $(document).ready(function() {
     let idToDelete; // Declare the idToDelete variable
-    const blurContainer = $('.container-fluid');
+    const container = $('.container-fluid');
     const deletePrompt = $('#deletePrompt');
     const updateForm = $('#update-form');
     const updateBtn = $('#updateBtn');
     const cancelDel = $('#cancelDel');
     const deleteBtn = $('#delete');
+    const idInput = $("#idInput");
+    const firstnameInput = $("#firstnameInput");
+    const lastnameInput = $("#lastnameInput");
+    const middlenameInput = $("#middlenameInput");
+    const addressInput = $("#addressInput");
+    const genderInput = $("#genderInput");
+    const ageInput = $("#ageInput");
+    const birthdateInput = $("#birthdateInput");
+    const emailInput = $("#emailInput");
+    const usernameInput = $("#usernameInput");
+    const passwordInput = $("#passwordInput");
 
     // Click event handler for delete button
     $('button.delete-button').click(function(e) {
         e.preventDefault();
         idToDelete = $(this).val();
-        blurContainer.toggleClass('blur');
+        container.toggleClass('blur');
         deletePrompt.toggleClass('d-none flex');
     });
 
@@ -19,21 +30,9 @@ $(document).ready(function() {
     $('button.update-button').click(function(e) {
         e.preventDefault();
         const buttonValue = $(this).val();
-        const idInput = $("#idInput");
-        const firstnameInput = $("#firstnameInput");
-        const lastnameInput = $("#lastnameInput");
-        const middlenameInput = $("#middlenameInput");
-        const addressInput = $("#addressInput");
-        const genderInput = $("#genderInput");
-        const ageInput = $("#ageInput");
-        const birthdateInput = $("#birthdateInput");
-        const emailInput = $("#emailInput");
-        const usernameInput = $("#usernameInput");
-        const passwordInput = $("#passwordInput");
-
         blurContainer.toggleClass('blur');
         updateForm.toggleClass('d-none');
-
+        
         // Set the values of the update form fields to the current record values
         idInput.val($("#id" + buttonValue).text());
         firstnameInput.val($("#firstname" + buttonValue).text());
@@ -54,28 +53,39 @@ $(document).ready(function() {
     // Click event handler for cancel delete button
     cancelDel.click(function(e) {
         e.preventDefault();
-        blurContainer.toggleClass('blur');
-        deletePrompt.toggleClass('d-none flex');
+        window.location.replace("admin_dashboard.php");
     });
 
     // Click event handler for confirm delete button
     deleteBtn.click(function(e) {
         e.preventDefault();
-        // Send the AJAX request to the server to delete the record with the given id
-        $.ajax({
-            type: "POST",
-            url: "delete.php",
-            data: {
-                id: idToDelete
-            },
-            success: function(response) {
-                alert("Data deleted.");
-                window.location.replace("admin_homepage.php");
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
-        });
+        
+
+        // baguhin mo rin sa delete ung ipopost mo sa id dapat laman  isset($_POST['id'])
+        // tas sa updateBtn mo rin parang ganto dapat
+        $.post("server/delete.php",
+                {id : idToDelete},
+                 function(data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+          });
+        
+        // mali ata ung url mo di kailangan server/delete.php kasi nakalink ung js mo don sa admin_homepage diba bali ung page mo manggaling sya sa labas ng folder ng server
+        // kaya need mo pa na specific ung sa url: "server/delete.php"
+               
+//         $.ajax({
+//             type: "POST",
+//             url: "delete.php",
+//             data: {
+//                 id: idToDelete
+//             },
+//             success: function(response) {
+//                 alert("Data deleted.");
+//                 window.location.replace("admin_homepage.php");
+//             },
+//             error: function(xhr, status, error) {
+//                 console.error(error);
+//             }
+//         });
     });
 
     // Submit event handler for update form
