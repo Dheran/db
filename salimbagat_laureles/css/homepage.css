@@ -1,0 +1,107 @@
+/* Header section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+  
+  .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Account or Settings button */
+  .account-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .account-btn:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Main content section */
+  .main-content {
+    margin-top: 80px;
+    /* Set the margin-top to be the same height as the header */
+  }
+  .dashboard {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  background-color: #f1f1f1;
+  width: 200px;
+  height: 100%;
+}
+
+.tabs {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.tabs li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.tabs li.active {
+  background-color: #4CAF50;
+}
+
+.tabs li.active a {
+  color: #fff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input[type=text] {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+button[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type=submit]:hover {
+  background-color: #3e8e41;
+}
