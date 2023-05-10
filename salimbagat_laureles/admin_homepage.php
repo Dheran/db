@@ -135,8 +135,6 @@ echo "Welcome, " . $_SESSION['username'] . "!";
                   JOIN tbl_user
                   ON tbl_info.id = tbl_user.id";
           $result = $conn->query($sql);
-          $updateBtns = array();
-          $deleteBtns = array();
 
           if ($result ->num_rows > 0) {
             while ($row = $result->fetch_assoc()){
@@ -156,7 +154,8 @@ echo "Welcome, " . $_SESSION['username'] . "!";
               echo "<td>";
               echo sprintf("<button class='btn btn-success update-button mr-3 ml-3' name='update-btn' value='%s'>Update</button>", $row["id"]);
               echo sprintf("<button class='btn btn-danger delete-button' name='delete-btn' value='%s'>Delete</button>", $row["id"]);
-
+	      echo "</td>"
+	      echo "</tr>"
             }
           } else {
             echo "0 results";
@@ -175,27 +174,27 @@ echo "Welcome, " . $_SESSION['username'] . "!";
 <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
 <form action="server/update.php" id="update-form" class="d-none h-100" method="post">
     <div class="form-group">
-        <label for="id">Id</label>
+        <label for="idInput">Id</label>
         <input type="text" name="id" id="idInput" class="form-control" disabled>
     </div>
     <div class="form-group">
-        <label for="firstname">First Name</label>
+        <label for="firstnameInput">First Name</label>
         <input type="text" name="firstname" id="firstnameInput" class="form-control">
     </div>
     <div class="form-group">
-        <label for="lastname">Last Name</label>
+        <label for="lastnameInput">Last Name</label>
         <input type="text" name="lastname" id="lastnameInput" class="form-control">
     </div>
     <div class="form-group">
-        <label for="middlename">Middle Name</label>
+        <label for="middlenameInput">Middle Name</label>
         <input type="text" name="middlename" id="middlenameInput" class="form-control">
     </div>
     <div class="form-group">
-        <label for="address">Address</label>
+        <label for="addressInput">Address</label>
         <input type="text" name="address" id="addressInput" class="form-control">
     </div>
     <div class="form-group">
-        <label for="gender">Gender</label>
+        <label for="genderInput">Gender</label>
         <select name="gender" id="genderInput" class="form-control">
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -203,27 +202,27 @@ echo "Welcome, " . $_SESSION['username'] . "!";
         </select>
     </div>
     <div class="form-group">
-        <label for="age">Age</label>
+        <label for="ageInput">Age</label>
         <input type="number" name="age" id="ageInput" class="form-control">
     </div>
     <div class="form-group">
-        <label for="birthdate">Birthdate</label>
+        <label for="birthdateInput">Birthdate</label>
         <input type="date" name="birthdate" id="birthdateInput" class="form-control">
     </div>
     <div class="form-group">
-        <label for="email">Email Address</label>
+        <label for="emailInput">Email Address</label>
         <input type="text" name="email" id="emailInput" class="form-control">
     </div>
     <div class="form-group">
-        <label for="username">Username</label>
+        <label for="usernameInput">Username</label>
         <input type="text" name="username" id="usernameInput" class="form-control">
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
+        <label for="passwordInput">Password</label>
         <input type="text" name="password" id="passwordInput" class="form-control">
     </div>
     <div class="form-group">
-        <label for="user_type">User Type</label>
+        <label for="user_typeInput">User Type</label>
         <select name="user_type" id="userTypeInput" class="form-control">
             <option value="member">Member</option>
             <option value="admin">Admin</option>
@@ -247,7 +246,9 @@ echo "Welcome, " . $_SESSION['username'] . "!";
 		
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="server/homepage.js"></script>
-  <script src="server/adminhp.js"></script>
+
+	<!-- Tanggalin mo tong last-->
+<!--   <script src="server/adminhp.js"></script> -->
   
 
 	
